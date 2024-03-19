@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/e24413c869.js" crossorigin="anonymous"></script>
+    <script src="./header.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <button onclick="window.history.back()"><i class="fa-solid fa-arrow-left"></i></button>
+    <div class="justify-center flex mb-10">
+    <!-- <h1>App X</h1> -->
+    </div>
+    <div class="flex flex-col gap-3">
+    <label for="name">Name</label>
+    <input class="px-2 py-1" name="name" type="text" >
+    <label for="pegawai">Nomor Pegawai</label>
+    <input class="px-2 py-1" name="pegawai" type="text" >
+     <label for="posisi">Posisi</label>
+    <select id="posisi" class="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full px-2 py-2 ">
+    <option selected disabled>Pilih posisi</option>
+    <option value="direktur">Direktur</option>
+    <option value="mk">Manajer Keuangan</option>
+    <option value="mo">Manajer Operasional</option>
+    <option value="do">Divisi Operasional</option>
+    <option value="kapten">Kapten</option>
+    <option value="kkm">KKM</option>
+    <option value="mualim">Mualim</option>
+    <option value="masinis">Masinis</option>   
+  </select>
+    
+    <label for="password">Password</label>
+    <input class="px-2 py-1" name="password" type="password">
+    <label for="password">Confirm Password</label>
+    <input class="px-2 py-1" name="password" type="password">
+    <button class="bg-indigo-600 text-white rounded-xl px-2 py-1">Sign Up</button>
+    </div>
+</body>
+</html>

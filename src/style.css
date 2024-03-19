@@ -1,0 +1,14 @@
+body{
+    padding: 20px; 
+}
+input{
+    border-style: solid;
+    border-color: gray;
+    border-radius: 10px;
+    border-width: 1px;
+
+}
+input:focus{
+    outline: none;
+    
+}
