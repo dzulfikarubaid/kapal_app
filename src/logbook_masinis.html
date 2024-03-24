@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/e24413c869.js" crossorigin="anonymous"></script>
+    <script src="./header.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    
+</head>
+<body class="text-sm">
+<button onclick="window.history.back()"><i class="fa-solid fa-arrow-left"></i></button>
+<div class="flex flex-col gap-4 mt-10">
+<label for="">Nama Kapal</label>
+<input type="text" class="px-2 py-1" id="nama_kapal">
+<label for="">Tanggal</label>
+<input type="date" class="px-2 py-1" id="tanggal">
+<label for="">Voyage Code</label>
+<input type="text" class="px-2 py-1" id="voyage_code">
+<label for="">Route</label>
+<input type="text" class="px-2 py-1" id="route">
+<label for="">Time Periode</label>
+<div class="flex flex-row gap-3 w-full justify-center items-center">
+<input type="time" class="px-2 py-1 w-full" id="time_periode">
+<h1>WIB</h1>
+<label for="">-</label>
+<input type="time" class="px-2 py-1 w-full" id="time_periode">
+<h1>WIB</h1>
+</div>
+</div> 
+<div>
+<h1 class="font-bold mt-6 mb-4">Main Engine 1</h1>
+<div class="flex flex-col gap-4">
+<label for="">Running Hours</label>
+<input type="text" class="px-2 py-1" id="running_hours_me1">
+<label for="">RPM</label>
+<input type="text" class="px-2 py-1" id="rpm_me1">
+<label for="">Fuel Oil Consumption</label>
+<div class="flex flex-row gap-3 items-center">
+<select id="fuel_oil_me1" class="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2 py-1 ">
+<option selected disabled>Pilih jenis fuel oil</option>
+<option value="HSD">HSD</option>
+<option value="MDO">MDO</option>
+<option value="LSFO">LSFO</option>
+</select>
+<input type="text" class="px-2 py-1" id="fuc_me1">
+<h1>Liter</h1>
+</div>
+</div>
+</div>
+<div>
+<h1 class="font-bold mt-6 mb-4">Main Engine 2</h1>
+<div class="flex flex-col gap-4">
+<label for="">Running Hours</label>
+<input type="text" class="px-2 py-1" id="running_hours_me2">
+<label for="">RPM</label>
+<input type="text" class="px-2 py-1" id="rpm_me2">
+<label for="">Fuel Oil Consumption</label>
+<div class="flex flex-row gap-3 items-center">
+<select id="fuel_oil_me2" class="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2 py-1 ">
+<option selected disabled>Pilih jenis fuel oil</option>
+<option value="HSD">HSD</option>
+<option value="MDO">MDO</option>
+<option value="LSFO">LSFO</option>
+</select>
+<input type="text" class="px-2 py-1" id="fuc_me2">
+<h1>Liter</h1>
+</div>
+</div>
+</div>
+<div>
+<h1 class="font-bold mt-6 mb-4">Auxiliary Engine 1</h1>
+<div class="flex flex-col gap-4">
+<label for="">Running Hours</label>
+<input type="text" class="px-2 py-1" id="running_hours_ae1">
+<label for="">RPM</label>
+<input type="text" class="px-2 py-1" id="rpm_ae1">
+<label for="">Fuel Oil Consumption</label>
+<div class="flex flex-row gap-3 items-center">
+<select id="fuel_oil_ae1" class="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2 py-1 ">
+<option selected disabled>Pilih jenis fuel oil</option>
+<option value="HSD">HSD</option>
+<option value="MDO">MDO</option>
+<option value="LSFO">LSFO</option>
+</select>
+<input type="text" class="px-2 py-1" id="fuc_ae1">
+<h1>Liter</h1>
+</div>
+</div>
+</div>
+<div>
+<h1 class="font-bold mt-6 mb-4">Auxiliary Engine 2</h1>
+<div class="flex flex-col gap-4">
+<label for="">Running Hours</label>
+<input type="text" class="px-2 py-1" id="running_hours_ae2">
+<label for="">RPM</label>
+<input type="text" class="px-2 py-1" id="rpm_ae2">
+<label for="">Fuel Oil Consumption</label>
+<div class="flex flex-row gap-3 items-center">
+<select id="fuel_oil_ae2" class="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2 py-1 ">
+<option selected disabled>Pilih jenis fuel oil</option>
+<option value="HSD">HSD</option>
+<option value="MDO">MDO</option>
+<option value="LSFO">LSFO</option>
+</select>
+<input type="text" class="px-2 py-1" id="fuc_ae2">
+<h1>Liter</h1>
+</div>
+</div>
+</div>
+<div>
+<h1 class="font-bold mt-6 mb-4">Auxiliary Engine 3</h1>
+<div class="flex flex-col gap-4">
+<label for="">Running Hours</label>
+<input type="text" class="px-2 py-1" id="running_hours_ae3">
+<label for="">RPM</label>
+<input type="text" class="px-2 py-1" id="rpm_ae3">
+<label for="">Fuel Oil Consumption</label>
+<div class="flex flex-row gap-3 items-center">
+<select id="fuel_oil_ae3" class="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2 py-1 ">
+<option selected disabled>Pilih jenis fuel oil</option>
+<option value="HSD">HSD</option>
+<option value="MDO">MDO</option>
+<option value="LSFO">LSFO</option>
+</select>
+<input type="text" class="px-2 py-1" id="fuc_ae3">
+<h1>Liter</h1>
+</div>
+</div>
+</div>
+<div>
+<h1 class="font-bold mt-6 mb-4">Auxiliary Engine 4</h1>
+<div class="flex flex-col gap-4">
+<label for="">Running Hours</label>
+<input type="text" class="px-2 py-1" id="running_hours_ae4">
+<label for="">RPM</label>
+<input type="text" class="px-2 py-1" id="rpm_ae4">
+<label for="">Fuel Oil Consumption</label>
+<div class="flex flex-row gap-3 items-center">
+<select id="fuel_oil_ae4" class="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2 py-1 ">
+<option selected disabled>Pilih jenis fuel oil</option>
+<option value="HSD">HSD</option>
+<option value="MDO">MDO</option>
+<option value="LSFO">LSFO</option>
+</select>
+<input type="text" class="px-2 py-1" id="fuc_ae4">
+<h1>Liter</h1>
+</div>
+</div>
+</div>
+</body>
+</html>

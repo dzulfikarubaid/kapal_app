@@ -6,6 +6,8 @@
     <script src="https://kit.fontawesome.com/e24413c869.js" crossorigin="anonymous"></script>
     <script src="./header.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
 </head>
 <body>
     <button onclick="window.history.back()"><i class="fa-solid fa-arrow-left"></i></button>
@@ -14,10 +16,36 @@
     </div>
     <div class="flex flex-col gap-3">
     <label for="pegawai">Nomor Pegawai</label>
-    <input class="px-2 py-1" name="pegawai" type="text" >
-    <label for="password">Password</label>
-    <input class="px-2 py-1" name="password" type="password">
-    <button class="bg-indigo-600 text-white rounded-xl px-2 py-1">Sign In</button>
+    <input class="px-2 py-1" id="pegawai" name="pegawai" type="text" >
+    <label for="password" >Password</label>
+    <input class="px-2 py-1" id="password" name="password" type="password">
+    <button class="bg-indigo-600 text-white rounded-xl px-2 py-1" onclick="login()">Sign In</button>
     </div>
 </body>
 </html>
+
+<script>
+function login(){
+    var password = document.getElementById('password').value;
+    var username = document.getElementById('pegawai').value;
+
+    var data = {
+        username:username,
+        password:password
+    }
+    axios.post("http://localhost:8000/login/", data)
+         .then(function (response) {
+                    console.log(response.data);
+                    var userData = response.data.user;
+                    var userDataString = JSON.stringify(userData);
+                    localStorage.setItem('token', response.data.token);
+                    localStorage.setItem('userData', userDataString);
+                    window.location.href = `${response.data.user.position}.html`
+                    
+
+                })
+                .catch(function (error) {
+                    console.error('There has been a problem with your fetch operation:', error);
+                });
+}
+</script>

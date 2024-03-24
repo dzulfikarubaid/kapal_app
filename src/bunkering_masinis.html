@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/e24413c869.js" crossorigin="anonymous"></script>
+    <script src="./header.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<!-- <button onclick="window.history.back()"><i class="fa-solid fa-arrow-left"></i></button> -->
+    
+    <div class="flex flex-row-reverse">
+    <button onclick="localStorage.removeItem('token'); window.location.href = 'index.html';">Sign Out</button></div>
+    <div class="flex flex-row justify-center items-center gap-5 h-screen text-white">
+    <a href="input_masinis.html" class="p-4 bg-indigo-500 rounded-xl">Input</a>
+    <a href="" class="p-4 bg-indigo-500 rounded-xl">Dashboard</a>
+    </div>
+</body>
+</html>

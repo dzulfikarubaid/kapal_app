@@ -12,9 +12,22 @@
       <link rel="stylesheet" href="./style.css">
 </head>
 <body >
-  <div class="flex flex-col gap-3"> 
-    <a href="./signin.html">Sign In</a>
-    <a href="./signup.html">Sign Up</a>
+  <div class="flex flex-col justify-center items-center  h-screen text-white gap-5 w-full text-center"> 
+  <img src="../ship.jpeg" class="w-[400px]" alt="">
+    <a href="./signin.html" class="bg-indigo-500 rounded-xl p-2 py-1 w-full">Sign In</a>
+    <a href="./signup.html" class="bg-indigo-500 rounded-xl p-2 py-1 w-full">Sign Up</a>
     </div>
 </body>
 </html>
+<script>
+  function isTokenValid() {
+    return localStorage.getItem('token') !== null;
+}
+function redirectUser() {
+    if (isTokenValid()) {
+        // Token masih valid, arahkan ke halaman tertentu
+        window.location.href = `${JSON.parse(localStorage.getItem('userData')).position}.html`;
+    } 
+}
+redirectUser();
+</script>
