@@ -24,14 +24,16 @@ export default {
   },
 }
 ```
-## Start App
-in first run
-npm install
-
-after install the modules, you can run app with
-npm run dev
-
-
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+## Start App
+in first run
+```
+npm install
+```
+
+after install the modules, you can run app with
+```
+npm run dev
