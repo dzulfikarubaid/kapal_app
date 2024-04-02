@@ -8,6 +8,7 @@ const Signup = () => {
   const [cpassword, setCPassword] = useState('');
   const [name, setName] = useState('');
   const [position, setPosition] = useState('');
+  const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const handlePegawaiChange = (event:any) => {
     setPegawai(event.target.value);
@@ -19,11 +20,14 @@ const Signup = () => {
   const handleNameChange = (event:any) => {
     setName(event.target.value);
   }
+  const handleEmailChange = (event:any) => {
+    setEmail(event.target.value);
+  }
   const handleCPasswordChange = (event:any) => {
     setCPassword(event.target.value);
   };
   const handleSignup = () => {
-    axios.post("http://localhost:8000/register/", {username: pegawai, password: password, name: name, position: position, confirm_password: cpassword})
+    axios.post("http://localhost:8000/register/", {username: pegawai, password: password, name: name, email:email, position: position, confirm_password: cpassword})
          .then(function (response) {
                     console.log(response.data);
                     var userData = response.data.user;
@@ -43,8 +47,17 @@ const Signup = () => {
     <TopBar3></TopBar3>
     <div className="flex flex-col gap-5 mt-10">
     {error && <div className='p-2 py-1 bg-red-300 rounded-xl flex flex-row justify-between items-center'><h1>{error}</h1><button onClick={()=>setError("")}><BiX size={20}></BiX></button></div>}
-      <DefaultInput
-          label="Nama"
+      
+        <DefaultInput
+          label="Employee ID"
+          id="pegawai"
+          name="pegawai"
+          type="text"
+          value={pegawai}
+          onChange={handlePegawaiChange}
+        />
+        <DefaultInput
+          label="Name"
           id="name"
           name="name"
           type="text"
@@ -52,28 +65,29 @@ const Signup = () => {
           onChange={handleNameChange}
         />
         <DefaultInput
-          label="Nomor Pegawai"
-          id="pegawai"
-          name="pegawai"
+          label="Email"
+          id="email"
+          name="email"
           type="text"
-          value={pegawai}
-          onChange={handlePegawaiChange}
+          value={email}
+          onChange={handleEmailChange}
         />
-        <label htmlFor="position">Posisi</label>
+        <label htmlFor="position">Position</label>
         <select value={position} onChange={
           (event) => {
             setPosition(event.target.value)
           }
         } id={`position`} name={`position`} className="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2 py-1 ">
-            <option selected disabled value={""}>Pilih Posisi</option>
-             <option value="direktur">Direktur</option>
-    <option value="mk">Manajer Keuangan</option>
-    <option value="mo">Manajer Operasional</option>
-    <option value="do">Divisi Operasional</option>
-    <option value="kapten">Kapten</option>
-    <option value="kkm">KKM</option>
-    <option value="mualim">Mualim</option>
-    <option value="masinis">Masinis</option> 
+            <option selected disabled value={""}>Choose your position</option>
+             <option value="director">Director</option>
+    <option value="fm">Financial Manager</option>
+    <option value="om">Operational Manager</option>
+    <option value="od">Operational Division</option>
+    <option value="master">Master</option>
+    <option value="ce">Chief Engineer</option>
+    <option value="officer">Officer</option>
+    <option value="engineer">Engineer</option> 
+    <option value="admin">Admin</option>
           </select>
         <DefaultInput
           label="Password"

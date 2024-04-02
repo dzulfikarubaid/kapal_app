@@ -7,7 +7,7 @@ const Home = () => {
 function redirectUser() {
     if (isTokenValid()) {
         // Token masih valid, arahkan ke halaman tertentu
-        window.location.href = `/${JSON.parse(localStorage.getItem('userData')).position}`;
+        window.location.href = `/${JSON.parse(localStorage.getItem('userData')!).position}`;
     } 
 }
 useEffect(() => {

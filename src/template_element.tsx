@@ -2,7 +2,7 @@ import React from 'react';
 import { BiArrowBack, BiLogOut } from 'react-icons/bi'
 
 
-export const DefaultInput = ({ label, id, name, type, value, onChange }) => {
+export const DefaultInput = ({ label, id, name, type, value, onChange }:any) => {
   return (
     <div className="flex flex-col gap-2">
       <label htmlFor={id}>{label}</label>
@@ -19,7 +19,7 @@ export const DefaultInput = ({ label, id, name, type, value, onChange }) => {
 };
 
 
-export function DefaultButton({onclick, text}){
+export function DefaultButton({onclick, text}:any){
     return(
         <button onClick={onclick} className='bg-indigo-500 text-white px-4 py-1 rounded-xl w-full'>{text}</button>
     )
@@ -27,7 +27,7 @@ export function DefaultButton({onclick, text}){
 
 function SignOut() {
   localStorage.clear();
-  window.location.href = '/home';
+  window.location.href = '/';
 }
 export const TopBar1 = () => {
   return (
@@ -56,51 +56,53 @@ export const TopBar3 = () => {
 }
 
 
-export const BigButton = ({href, children}) => {
+export const BigButton = ({href, children}:any) => {
   return (
     <a className='p-4 rounded-xl bg-indigo-500 text-white' href={href}>{children}</a>
   )
 }
 
-export function MainEngine({ engineNumber }) {
+export function MainEngine({ engineNumber, rhOnChange, rhValue, rpmOnChange, rpmValue, focValue, focOnChange, fucValue, fucOnChange  }:any) {
   return (
     <div className='w-full'>
       <h1 className="font-bold mt-6 mb-4">Main Engine {engineNumber}</h1>
       <div className="flex flex-col gap-4">
-        <DefaultInput label="Running Hours" id={`running_hours_me${engineNumber}`} name={`running_hours_me${engineNumber}`} type="text" value="" onChange={() => {}} />
-        <DefaultInput label="RPM" id={`rpm_me${engineNumber}`} name={`rpm_me${engineNumber}`} type="text" value="" onChange={() => {}} />
+        <DefaultInput label="Running Hours" id={`running_hours_me${engineNumber}`} name={`running_hours_me${engineNumber}`} type="text" value={rhValue} onChange={rhOnChange} />
+        <DefaultInput label="RPM" id={`rpm_me${engineNumber}`} name={`rpm_me${engineNumber}`} type="text" value={rpmValue} onChange={rpmOnChange} />
         <label htmlFor={`fuel_oil_me${engineNumber}`}>Fuel Oil Consumption</label>
-        <div className="flex flex-row gap-3 items-center">
-          <select id={`fuel_oil_me${engineNumber}`} name={`fuel_oil_me${engineNumber}`} className="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2 py-1 ">
-            <option selected disabled>Pilih jenis fuel oil</option>
+        <div className="flex flex-row gap-3 items-center justify-center">
+          <select id={`fuel_oil_me${engineNumber}`} name={`fuel_oil_me${engineNumber}`} className="bg-white focus:outline-none text-gray-900  rounded-xl border-[1px] focus:ring-blue-500 focus:border-blue-500  w-full px-2 py-1 " value={focValue} onChange={focOnChange}>
+            <option value={""} selected disabled> Type</option>
             <option value="HSD">HSD</option>
             <option value="MDO">MDO</option>
             <option value="LSFO">LSFO</option>
           </select>
-          <DefaultInput label="" id={`fuc_me${engineNumber}`} name={`fuc_me${engineNumber}`} type="text" value="" onChange={() => {}} />
+          <div className='flex flex-row gap-3 items-center'>
+          <DefaultInput label="" id={`fuc_me${engineNumber}`} name={`fuc_me${engineNumber}`} type="text" value={fucValue} onChange={fucOnChange} />
           <h1>Liter</h1>
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export const AuxiliaryEngine = ({ engineNumber }) => {
+export const AuxiliaryEngine = ({ engineNumber,rhOnChange, rhValue, loadOnChange, loadValue, focValue, focOnChange, fucValue, fucOnChange }:any) => {
   return (
     <div className='w-full'>
       <h1 className="font-bold mt-6 mb-4">Auxiliary Engine {engineNumber}</h1>
       <div className="flex flex-col gap-4">
-        <DefaultInput label="Running Hours" id={`running_hours_ae${engineNumber}`} name={`running_hours_ae${engineNumber}`} type="text" value="" onChange={() => {}} />
-        <DefaultInput label="RPM" id={`rpm_ae${engineNumber}`} name={`rpm_ae${engineNumber}`} type="text" value="" onChange={() => {}} />
+        <DefaultInput label="Running Hours" id={`running_hours_ae${engineNumber}`} name={`running_hours_ae${engineNumber}`} type="text" value={rhValue} onChange={rhOnChange} />
+        <DefaultInput label="Load (kW)" id={`load_ae${engineNumber}`} name={`load_ae${engineNumber}`} type="text" value={loadValue} onChange={loadOnChange} />
         <label htmlFor={`fuel_oil_ae${engineNumber}`}>Fuel Oil Consumption</label>
-        <div className="flex flex-row gap-3 items-center ">
-          <select id={`fuel_oil_ae${engineNumber}`} name={`fuel_oil_ae${engineNumber}`} className="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2 py-1 ">
-            <option selected disabled>Pilih jenis fuel oil</option>
+        <div className="flex flex-row gap-3 items-center justify-center items-center ">
+          <select value={focValue} onChange={focOnChange} id={`fuel_oil_ae${engineNumber}`} name={`fuel_oil_ae${engineNumber}`} className="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2 py-1 ">
+            <option selected disabled value={""}> Type</option>
             <option value="HSD">HSD</option>
             <option value="MDO">MDO</option>
             <option value="LSFO">LSFO</option>
           </select>
-          <DefaultInput label="" id={`fuc_ae${engineNumber}`} name={`fuc_ae${engineNumber}`} type="text" value="" onChange={() => {}} />
+          <DefaultInput label="" id={`fuc_ae${engineNumber}`} name={`fuc_ae${engineNumber}`} type="text" value={fucValue} onChange={fucOnChange} />
           <h1>Liter</h1>
         </div>
       </div>
@@ -110,22 +112,22 @@ export const AuxiliaryEngine = ({ engineNumber }) => {
 
 
 
-export const Boiler = ({ engineNumber }) => {
+export const Boiler = ({ engineNumber, rhOnChange, rhValue, focValue, focOnChange, fucValue, fucOnChange }:any) => {
   return (
     <div className='w-full'>
       <h1 className="font-bold mt-6 mb-4">Boiler</h1>
       <div className="flex flex-col gap-4">
-        <DefaultInput label="Running Hours" id={`running_hours_ae${engineNumber}`} name={`running_hours_ae${engineNumber}`} type="text" value="" onChange={() => {}} />
-        <DefaultInput label="RPM" id={`rpm_ae${engineNumber}`} name={`rpm_ae${engineNumber}`} type="text" value="" onChange={() => {}} />
+        <DefaultInput label="Running Hours" id={`running_hours_ae${engineNumber}`} name={`running_hours_ae${engineNumber}`} type="text" value={rhValue} onChange={rhOnChange} />
+       
         <label htmlFor={`fuel_oil_ae${engineNumber}`}>Fuel Oil Consumption</label>
         <div className="flex flex-row gap-3 items-center ">
-          <select id={`fuel_oil_ae${engineNumber}`} name={`fuel_oil_ae${engineNumber}`} className="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2 py-1 ">
-            <option selected disabled>Pilih jenis fuel oil</option>
+          <select value={focValue} onChange={focOnChange} id={`fuel_oil_ae${engineNumber}`} name={`fuel_oil_ae${engineNumber}`} className="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2 py-1 ">
+            <option selected disabled> Type</option>
             <option value="HSD">HSD</option>
             <option value="MDO">MDO</option>
             <option value="LSFO">LSFO</option>
           </select>
-          <DefaultInput label="" id={`fuc_ae${engineNumber}`} name={`fuc_ae${engineNumber}`} type="text" value="" onChange={() => {}} />
+          <DefaultInput label="" id={`fuc_ae${engineNumber}`} name={`fuc_ae${engineNumber}`} type="text" value={fucValue} onChange={fucOnChange} />
           <h1>Liter</h1>
         </div>
       </div>

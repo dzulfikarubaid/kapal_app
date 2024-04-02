@@ -6,11 +6,11 @@ const Signin = () => {
   const [pegawai, setPegawai] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const handlePegawaiChange = (event) => {
+  const handlePegawaiChange = (event:any) => {
     setPegawai(event.target.value);
   };
 
-  const handlePasswordChange = (event) => {
+  const handlePasswordChange = (event:any) => {
     setPassword(event.target.value);
   };
   const handleSignin = () => {
@@ -41,7 +41,7 @@ const Signin = () => {
     <div className="flex flex-col gap-5 mt-10">
     {error && <div className='p-2 py-1 bg-red-300 rounded-xl flex flex-row justify-between items-center'><h1>{error}</h1><button onClick={()=>setError("")}><BiX size={20}></BiX></button></div>}
         <DefaultInput
-          label="Nomor Pegawai"
+          label="Employee ID"
           id="pegawai"
           name="pegawai"
           type="text"

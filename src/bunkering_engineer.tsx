@@ -1,7 +1,7 @@
 import React from 'react'
 import { TopBar1 } from './template_element'
 
-const BunkeringMasinis = () => {
+const BunkeringEngineer = () => {
   return (
     <div>
     <TopBar1></TopBar1>
@@ -9,4 +9,4 @@ const BunkeringMasinis = () => {
   )
 }
 
-export default BunkeringMasinis
+export default BunkeringEngineer
