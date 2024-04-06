@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { DefaultInput, InputNoLabel, TopBar1 } from './template_element'
+import { DefaultButton, DefaultInput, InputNoLabel, TopBar1 } from './template_element'
 
 const BunkeringEngineer = () => {
   const [inputs, setInputs] = useState({
@@ -50,15 +50,17 @@ const BunkeringEngineer = () => {
         <DefaultInput label="Vessel Name" type="text" value={inputs.vessel_name} onChange={(e: any) => handleInputChange("vessel_name", e.target.value)} />
 
         <DefaultInput label="Route" type="text" value={inputs.route} onChange={(e: any) => handleInputChange("route", e.target.value)} />
-        <DefaultInput label="Date" value={inputs.date} onChange={(e: any) => handleInputChange("date", e.target.value)}></DefaultInput>
+        <DefaultInput type="date" label="Date" value={inputs.date} onChange={(e: any) => handleInputChange("date", e.target.value)}></DefaultInput>
         <div className='flex flex-col gap-2'>
-        <h1>Time</h1>
-        <div className='flex flex-row gap-3'>
-        <InputNoLabel type="text" value={inputs.time} onChange={(e: any) => handleInputChange("time", e.target.value)} />
-        <h1>WIB</h1></div></div>
+          <h1>Time</h1>
+          <div className='flex flex-row gap-3'>
+            <InputNoLabel type="text" value={inputs.time} onChange={(e: any) => handleInputChange("time", e.target.value)} />
+            <h1>WIB</h1>
+          </div>
+        </div>
       </div>
       <div className='flex flex-row w-full gap-20'>
-        <div className='flex flex-col mt-10 gap-2'>
+        <div className='flex flex-col mt-10 gap-3'>
           <h1 className='font-bold'>Bunkering Stock</h1>
           <h1 >Last Bunker Stock</h1>
           <div className='flex flex-col gap-3'>
@@ -72,7 +74,7 @@ const BunkeringEngineer = () => {
         <div className='flex flex-col mt-10 gap-3'>
           <h1 className='font-bold'>After Refueling</h1>
           <h1 >After Refueling Stock</h1>
-           <div className='flex flex-col gap-3'>
+          <div className='flex flex-col gap-3'>
             <Stock stockvalue={inputs.ar1} typevalue={inputs.ar_type1} typeOnChange={(e: any) => handleInputChange("ar_type1", e.target.value)} stockOnChange={(e: any) => handleInputChange("ar1", e.target.value)}></Stock>
             <Stock stockvalue={inputs.ar2} typevalue={inputs.ar_type2} typeOnChange={(e: any) => handleInputChange("ar_type2", e.target.value)} stockOnChange={(e: any) => handleInputChange("ar2", e.target.value)}></Stock>
             <Stock stockvalue={inputs.ar3} typevalue={inputs.ar_type3} typeOnChange={(e: any) => handleInputChange("ar_type3", e.target.value)} stockOnChange={(e: any) => handleInputChange("ar3", e.target.value)}></Stock>
@@ -81,6 +83,8 @@ const BunkeringEngineer = () => {
           </div>
         </div>
       </div>
+      <div className='mt-5'>
+      <DefaultButton onclick={()=>{}} text={"Submit"}></DefaultButton></div>
     </div>
   )
 }

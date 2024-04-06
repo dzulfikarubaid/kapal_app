@@ -87,7 +87,7 @@ const Signup = () => {
     <option value="ce">Chief Engineer</option>
     <option value="officer">Officer</option>
     <option value="engineer">Engineer</option> 
-    <option value="admin">Admin</option>
+    {/* <option value="admin">Admin</option> */}
           </select>
         <DefaultInput
           label="Password"

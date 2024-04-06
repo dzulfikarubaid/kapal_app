@@ -1,12 +1,16 @@
 import React from 'react'
-import { TopBar1 } from './template_element'
+import { BigButton, TopBar2 } from './template_element'
 
-const CE = () => {
+const Ce = () => {
   return (
-    <div>
-    <TopBar1></TopBar1>
+    <div className=' w-full'>
+    <TopBar2></TopBar2>
+    <div className='flex h-screen flex-row gap-4 justify-center items-center'>
+    <BigButton href="/ce-nr">Noon Report Data</BigButton>
+    <BigButton href="/ce-dr">Data Recap</BigButton>
+    </div>
     </div>
   )
 }
 
-export default CE
+export default Ce

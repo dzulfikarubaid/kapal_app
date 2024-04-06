@@ -57,6 +57,7 @@ const Signin = () => {
           onChange={handlePasswordChange}
         />
           <DefaultButton onclick={handleSignin} text={"Sign In"} ></DefaultButton>
+          <h1>Are you an admin? <span><a className='text-blue-800' href="http://localhost:8000/admin">Sign in as admin</a></span></h1>
     </div>
   
     </div>

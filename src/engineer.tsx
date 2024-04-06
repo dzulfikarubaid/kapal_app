@@ -7,7 +7,7 @@ const Engineer = () => {
     <TopBar2></TopBar2>
     <div className='flex h-screen flex-row gap-4 justify-center items-center'>
     <BigButton href="/input-engineer">Input</BigButton>
-    <BigButton href="/dashboard-engineer">Dashboard</BigButton>
+    <BigButton href="/dashboard-engineer">Data Recap</BigButton>
     </div>
     </div>
   )
