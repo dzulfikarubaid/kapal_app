@@ -20,10 +20,19 @@ const VITE_DEV_SERVER_URL = process.env['VITE_DEV_SERVER_URL']
 
 function createWindow() {
   win = new BrowserWindow({
+    // frame:false,
     icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
+    fullscreen:true,
+    resizable: true,
+        movable: true,
+        minimizable:true,
+        maximizable:true,
+        closable:true,
+        titleBarOverlay:true,
+        
   })
 
   // Test active push message to Renderer-process.

@@ -27,7 +27,7 @@ const Signup = () => {
     setCPassword(event.target.value);
   };
   const handleSignup = () => {
-    axios.post("http://localhost:8000/register/", {username: pegawai, password: password, name: name, email:email, position: position, confirm_password: cpassword})
+    axios.post("http://sezero.pythonanywhere.com/register/", {username: pegawai, password: password, name: name, email:email, position: position, confirm_password: cpassword})
          .then(function (response) {
                     console.log(response.data);
                     var userData = response.data.user;

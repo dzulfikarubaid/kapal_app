@@ -18,7 +18,7 @@ const Signin = () => {
         username: pegawai,
         password: password
     }
-    axios.post("http://localhost:8000/login/", data)
+    axios.post("http://sezero.pythonanywhere.com/login/", data)
          .then(function (response) {
                     console.log(response.data);
                     var userData = response.data.user;
@@ -57,7 +57,7 @@ const Signin = () => {
           onChange={handlePasswordChange}
         />
           <DefaultButton onclick={handleSignin} text={"Sign In"} ></DefaultButton>
-          <h1>Are you an admin? <span><a className='text-blue-800' href="http://localhost:8000/admin">Sign in as admin</a></span></h1>
+          <h1>Are you an admin? <span><a className='text-blue-800' href="http://sezero.pythonanywhere.com/admin">Sign in as admin</a></span></h1>
     </div>
   
     </div>

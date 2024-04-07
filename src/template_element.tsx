@@ -47,7 +47,7 @@ export const TopBar1 = () => {
   return (
     <div className='py-4 justify-between items-center flex flex-row'>
     <button onClick={()=>window.history.back()}><BiArrowBack size={25}></BiArrowBack></button>
-   <button className='border-[1px] border-black p-2 rounded-xl ' onClick={SignOut}>Sign Out</button>
+   <button className='border-2 border-black p-2 rounded-xl ' onClick={SignOut}>Sign Out</button>
     </div>
   )
 }
@@ -55,7 +55,7 @@ export const TopBar2 = () => {
   return (
     <div className='py-4 items-center flex flex-row-reverse'>
 
-       <button className='border-[1px] border-black p-2 rounded-xl ' onClick={SignOut}>Sign Out</button>
+       <button className='border-2 border-black p-2 rounded-xl ' onClick={SignOut}>Sign Out</button>
     </div>
   )
 }
