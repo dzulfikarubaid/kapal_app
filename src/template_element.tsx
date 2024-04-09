@@ -76,7 +76,7 @@ export const BigButton = ({href, children}:any) => {
   )
 }
 
-export function MainEngine({ engineNumber, rhOnChange, rhValue, rpmOnChange, rpmValue, focValue, focOnChange, fucValue, fucOnChange  }:any) {
+export function MainEngine({ engineNumber, rhOnChange, rhValue, rpmOnChange, rpmValue, typeValue, typeOnChange, fucValue, fucOnChange  }:any) {
   return (
     <div className='w-full'>
       <h1 className="font-bold mt-6 mb-4">Main Engine {engineNumber}</h1>
@@ -85,7 +85,7 @@ export function MainEngine({ engineNumber, rhOnChange, rhValue, rpmOnChange, rpm
         <DefaultInput label="RPM" id={`rpm_me${engineNumber}`} name={`rpm_me${engineNumber}`} type="text" value={rpmValue} onChange={rpmOnChange} />
         <label htmlFor={`fuel_oil_me${engineNumber}`}>Fuel Oil Consumption</label>
         <div className="flex flex-row gap-3 items-center">
-          <select id={`fuel_oil_me${engineNumber}`} name={`fuel_oil_me${engineNumber}`} className="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2 py-1 " value={focValue} onChange={focOnChange}>
+          <select id={`fuel_oil_me${engineNumber}`} name={`fuel_oil_me${engineNumber}`} className="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2 py-1 " value={typeValue} onChange={typeOnChange}>
             <option value={""} selected disabled> Type</option>
             <option value="HSD">HSD</option>
             <option value="MDO">MDO</option>
@@ -101,7 +101,7 @@ export function MainEngine({ engineNumber, rhOnChange, rhValue, rpmOnChange, rpm
   );
 }
 
-export const AuxiliaryEngine = ({ engineNumber,rhOnChange, rhValue, loadOnChange, loadValue, focValue, focOnChange, fucValue, fucOnChange }:any) => {
+export const AuxiliaryEngine = ({ engineNumber,rhOnChange, rhValue, loadOnChange, loadValue, typeValue, typeOnChange, fucValue, fucOnChange }:any) => {
   return (
     <div className='w-full'>
       <h1 className="font-bold mt-6 mb-4">Auxiliary Engine {engineNumber}</h1>
@@ -110,7 +110,7 @@ export const AuxiliaryEngine = ({ engineNumber,rhOnChange, rhValue, loadOnChange
         <DefaultInput label="Load (kW)" id={`load_ae${engineNumber}`} name={`load_ae${engineNumber}`} type="text" value={loadValue} onChange={loadOnChange} />
         <label htmlFor={`fuel_oil_ae${engineNumber}`}>Fuel Oil Consumption</label>
         <div className="flex flex-row gap-3 items-center justify-center items-center ">
-          <select value={focValue} onChange={focOnChange} id={`fuel_oil_ae${engineNumber}`} name={`fuel_oil_ae${engineNumber}`} className="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2 py-1 ">
+          <select value={typeValue} onChange={typeOnChange} id={`fuel_oil_ae${engineNumber}`} name={`fuel_oil_ae${engineNumber}`} className="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2 py-1 ">
             <option selected disabled value={""}> Type</option>
             <option value="HSD">HSD</option>
             <option value="MDO">MDO</option>
@@ -126,7 +126,7 @@ export const AuxiliaryEngine = ({ engineNumber,rhOnChange, rhValue, loadOnChange
 
 
 
-export const Boiler = ({rhOnChange, rhValue, focValue, focOnChange, fucValue, fucOnChange }:any) => {
+export const Boiler = ({rhOnChange, rhValue, typeValue, typeOnChange, fucValue, fucOnChange }:any) => {
   return (
     <div className='w-full'>
       <h1 className="font-bold mt-6 mb-4">Boiler</h1>
@@ -135,7 +135,7 @@ export const Boiler = ({rhOnChange, rhValue, focValue, focOnChange, fucValue, fu
        
         <label htmlFor={`fuel_oil_boiler`}>Fuel Oil Consumption</label>
         <div className="flex flex-row gap-3 items-center ">
-          <select value={focValue} onChange={focOnChange} id={`fuel_oil_boiler`} name={`fuel_oil_boiler`} className="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2 py-1 ">
+          <select value={typeValue} onChange={typeOnChange} id={`fuel_oil_boiler`} name={`fuel_oil_boiler`} className="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2 py-1 ">
             <option selected disabled value={""}> Type</option>
             <option value="HSD">HSD</option>
             <option value="MDO">MDO</option>
