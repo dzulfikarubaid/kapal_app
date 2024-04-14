@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
 import { DefaultButton, DefaultInput, InputNoLabel, TopBar1 } from './template_element'
+import axios from 'axios';
 
 const OfficerLogbook = () => {
     const [inputs, setInputs] = useState({
-
-    td: "",
-    displacement: "",
-    trim:"",
+    lat1: "",
+    long1: "",
+    lat2: "",
+    long2: "",
+    lat3: "",
+    long3: "",
+    lat4: "",
+    long4: "",
     rcd:"",
     vessel_name: "",
     route:"",
@@ -18,9 +23,27 @@ const OfficerLogbook = () => {
     force:"",
     cloud:"",
     wc:"",
-    sc:""
-    
+    sc:"",
+    user: JSON.parse(localStorage.getItem('userData')!).id,
   });
+  const handleSubmit = () => {
+    console.log(inputs)
+    axios.post("http://sezero.pythonanywhere.com/officer-logbook/", inputs)
+    .then((response:any)=>{
+      console.log(response)
+      alert("Success added data")
+    })
+    .catch((error:any)=>{
+      console.log(error)
+      const errors = error.response.data;
+
+      let error_message = "";
+      Object.keys(errors).forEach(key => {
+        error_message += `${key}: ${errors[key]}\n`
+      });
+      alert(error_message)
+    })
+  }
   const handleInputChange = (fieldName: any, value: string) => {
     setInputs((prevState: any) => ({
       ...prevState,
@@ -52,35 +75,35 @@ const OfficerLogbook = () => {
       <div className=' flex flex-col gap-3 '>
         <h1>Latitude 1</h1>
         <div className='flex flex-row gap-3'>
-          <InputNoLabel type="text" value={inputs.td} onChange={(e: any) => handleInputChange("td", e.target.value)} />
+          <InputNoLabel type="text" value={inputs.lat1} onChange={(e: any) => handleInputChange("lat1", e.target.value)} />
         </div>
         <h1>Longitude 1</h1>
         <div className='flex flex-row gap-3'>
-          <InputNoLabel type="text" value={inputs.td} onChange={(e: any) => handleInputChange("td", e.target.value)} />
+          <InputNoLabel type="text" value={inputs.long1} onChange={(e: any) => handleInputChange("long1", e.target.value)} />
         </div>
         <h1>Latitude 2</h1>
         <div className='flex flex-row gap-3'>
-          <InputNoLabel type="text" value={inputs.displacement} onChange={(e: any) => handleInputChange("displacement", e.target.value)} />
+          <InputNoLabel type="text" value={inputs.lat2} onChange={(e: any) => handleInputChange("lat2", e.target.value)} />
         </div>
         <h1>Longitude 2</h1>
         <div className='flex flex-row gap-3'>
-          <InputNoLabel type="text" value={inputs.td} onChange={(e: any) => handleInputChange("td", e.target.value)} />
+          <InputNoLabel type="text" value={inputs.long2} onChange={(e: any) => handleInputChange("long2", e.target.value)} />
         </div>
         <h1>Latitude 3</h1>
         <div className='flex flex-row gap-3'>
-          <InputNoLabel type="text" value={inputs.displacement} onChange={(e: any) => handleInputChange("displacement", e.target.value)} />
+          <InputNoLabel type="text" value={inputs.lat3} onChange={(e: any) => handleInputChange("lat3", e.target.value)} />
         </div>
         <h1>Longitude 3</h1>
         <div className='flex flex-row gap-3'>
-          <InputNoLabel type="text" value={inputs.td} onChange={(e: any) => handleInputChange("td", e.target.value)} />
+          <InputNoLabel type="text" value={inputs.long3} onChange={(e: any) => handleInputChange("long3", e.target.value)} />
         </div>
         <h1>Latitude 4</h1>
         <div className='flex flex-row gap-3'>
-          <InputNoLabel type="text" value={inputs.displacement} onChange={(e: any) => handleInputChange("displacement", e.target.value)} />
+          <InputNoLabel type="text" value={inputs.lat4} onChange={(e: any) => handleInputChange("lat4", e.target.value)} />
         </div>
         <h1>Longitude 4</h1>
         <div className='flex flex-row gap-3'>
-          <InputNoLabel type="text" value={inputs.td} onChange={(e: any) => handleInputChange("td", e.target.value)} />
+          <InputNoLabel type="text" value={inputs.long4} onChange={(e: any) => handleInputChange("long4", e.target.value)} />
         </div>
       </div>
       <div className='flex flex-col gap-3'>
@@ -122,14 +145,14 @@ const OfficerLogbook = () => {
         </div>
         <h1>Sea Condition</h1>
         <div className='flex flex-row gap-3'>
-          <select id={`stock_type`} name={`stock_type`} value={inputs.sc} onChange={(e:any)=>handleInputChange('sc', e.target.value)} className="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2 py-1 w-full">
+          <select value={inputs.sc} onChange={(e:any)=>handleInputChange('sc', e.target.value)} className="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2 py-1 w-full">
           <option selected disabled value={""}>Select</option>
-          <option value="Head Current">Calm</option>
-          <option value="Stern Current">Slight</option>
-          <option value="Beam Current">Moderate</option>
-          <option value="Beam Current">Rough</option>
-          <option value="Beam Current">Very Rough</option>
-          <option value="Beam Current">Extremely Rough</option>
+          <option value="Calm">Calm</option>
+          <option value="Slight">Slight</option>
+          <option value="Moderate">Moderate</option>
+          <option value="Rough">Rough</option>
+          <option value="Very Rough">Very Rough</option>
+          <option value="Extremely Rough">Extremely Rough</option>
         </select>
    
         </div>
@@ -146,7 +169,7 @@ const OfficerLogbook = () => {
         </div>
       </div>
       <div className='mt-10'>
-      <DefaultButton onClick={()=>{}} text="Submit"></DefaultButton></div>
+      <DefaultButton onclick={handleSubmit} text="Submit"></DefaultButton></div>
     </div>
   )
 }

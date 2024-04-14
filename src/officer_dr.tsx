@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { DefaultButton, DefaultInput, InputNoLabel, TopBar1 } from './template_element'
+import axios from 'axios';
 
 const OfficerDr = () => {
     const [inputs, setInputs] = useState({
@@ -9,15 +10,33 @@ const OfficerDr = () => {
     trim:"",
     rc:"",
     vessel_name: "",
-    route:"",
     date: "",
     voyage_code: "",
+    user: JSON.parse(localStorage.getItem('userData')!).id
   });
   const handleInputChange = (fieldName: any, value: string) => {
     setInputs((prevState: any) => ({
       ...prevState,
       [fieldName]: value
     }));
+  }
+  const handleSubmit = () => {
+    console.log(inputs)
+    axios.post("http://sezero.pythonanywhere.com/officer-dr/", inputs)
+    .then((response:any)=>{
+      console.log(response)
+      alert("Success added data")
+    })
+    .catch((error:any)=>{
+      console.log(error)
+      const errors = error.response.data;
+
+      let error_message = "";
+      Object.keys(errors).forEach(key => {
+        error_message += `${key}: ${errors[key]}\n`
+      });
+      alert(error_message)
+    })
   }
   return (
     <div>
@@ -51,7 +70,7 @@ const OfficerDr = () => {
         </div>
       </div>
       <div className='mt-10'>
-      <DefaultButton onClick={()=>{}} text="Submit"></DefaultButton></div>
+      <DefaultButton onclick={handleSubmit} text="Submit"></DefaultButton></div>
     </div>
   )
 }

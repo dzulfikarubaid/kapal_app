@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { DefaultButton, DefaultInput, InputNoLabel, TopBar1 } from './template_element'
+import axios from 'axios';
 
 const CeNr = () => {
    const [inputs, setInputs] = useState({
@@ -44,9 +45,25 @@ const CeNr = () => {
     remain2:"",
     remain_type3:"",
     remain3:"",
+    user: JSON.parse(localStorage.getItem('userData')!).id
   });
-  function handleSubmit(){
+  const handleSubmit = () => {
+    console.log(inputs)
+    axios.post("http://sezero.pythonanywhere.com/ce-nr/", inputs)
+    .then((response:any)=>{
+      console.log(response)
+      alert("Success added data")
+    })
+    .catch((error:any)=>{
+      console.log(error)
+      const errors = error.response.data;
 
+      let error_message = "";
+      Object.keys(errors).forEach(key => {
+        error_message += `${key}: ${errors[key]}\n`
+      });
+      alert(error_message)
+    })
   }
   const handleInputChange = (fieldName: any, value: string) => {
     setInputs((prevState: any) => ({
@@ -54,20 +71,39 @@ const CeNr = () => {
       [fieldName]: value
     }));
   }
-  function Stock({ typevalue, typeOnChange, stockvalue, stockOnChange }: any) {
-    return (
-      <div className='flex flex-row gap-4  items-center'>
-        <select id={`stock_type`} name={`stock_type`} value={typevalue} onChange={typeOnChange} className="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2 py-1 ">
-          <option selected disabled value={""}>Type</option>
-          <option value="HSD">HSD</option>
-          <option value="MDO">MDO</option>
-          <option value="LSFO">LSFO</option>
-        </select>
-        <InputNoLabel type="text" value={stockvalue} onChange={stockOnChange} />
-        <h1>Liter</h1>
-      </div>
-    )
+  
+  const renderEngineInputs = (engineType: string, engineCount: number) => {
+    const engineInputs = [];
+    for (let i = 1; i <= engineCount; i++) {
+      engineInputs.push(
+        <div key={`${engineType}${i}`} className='flex flex-row gap-4 items-center'>
+          <select id={`${engineType}_type${i}`} name={`${engineType}_type${i}`} value={inputs[`${engineType}_type${i}`]} onChange={(e) => handleInputChange(`${engineType}_type${i}`, e.target.value)} className="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2 py-1 ">
+            <option selected disabled value={""}>Type</option>
+            <option value="HSD">HSD</option>
+            <option value="MDO">MDO</option>
+            <option value="LSFO">LSFO</option>
+          </select>
+          <InputNoLabel type="text" value={inputs[`${engineType}${i}`]} onChange={(e) => handleInputChange(`${engineType}${i}`, e.target.value)} />
+          <h1>Liter</h1>
+        </div>
+      );
+    }
+    return engineInputs;
   }
+  // function Stock({ typevalue, typeOnChange, stockvalue, stockOnChange }: any) {
+  //   return (
+  //     <div className='flex flex-row gap-4  items-center'>
+  //       <select id={`stock_type`} name={`stock_type`} value={typevalue} onChange={typeOnChange} className="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2 py-1 ">
+  //         <option selected disabled value={""}>Type</option>
+  //         <option value="HSD">HSD</option>
+  //         <option value="MDO">MDO</option>
+  //         <option value="LSFO">LSFO</option>
+  //       </select>
+  //       <InputNoLabel type="text" value={stockvalue} onChange={stockOnChange} />
+  //       <h1>Liter</h1>
+  //     </div>
+  //   )
+  // }
   return (
     <div><TopBar1></TopBar1>
     <div className='flex flex-wrap w-full justify-between'>
@@ -79,31 +115,21 @@ const CeNr = () => {
       <div className='mt-10 flex flex-row gap-16'>
       <div className='flex flex-col gap-3'>
       <h1>Main Engine</h1>
-      <Stock typevalue={inputs.me_type1} typeOnChange={(e:any)=>handleInputChange('me_type1', e.target.value)} stockvalue={inputs.me1} onChange={(e:any)=>handleInputChange('me1', e.target.value)}></Stock>
-    <Stock typevalue={inputs.me_type2} typeOnChange={(e:any)=>handleInputChange('me_type2', e.target.value)} stockvalue={inputs.me2} onChange={(e:any)=>handleInputChange('me2', e.target.value)}></Stock>
-    <Stock typevalue={inputs.me_type3} typeOnChange={(e:any)=>handleInputChange('me_type3', e.target.value)} stockvalue={inputs.me3} onChange={(e:any)=>handleInputChange('me3', e.target.value)}></Stock>
+      {renderEngineInputs('me', 3)}
       <h1>Auxiliary Engine</h1>
-    <Stock typevalue={inputs.ae_type1} typeOnChange={(e:any)=>handleInputChange('ae_type1', e.target.value)} stockvalue={inputs.ae1} onChange={(e:any)=>handleInputChange('ae1', e.target.value)}></Stock>
-    <Stock typevalue={inputs.ae_type2} typeOnChange={(e:any)=>handleInputChange('ae_type2', e.target.value)} stockvalue={inputs.ae2} onChange={(e:any)=>handleInputChange('ae2', e.target.value)}></Stock>
-    <Stock typevalue={inputs.ae_type3} typeOnChange={(e:any)=>handleInputChange('ae_type3', e.target.value)} stockvalue={inputs.ae3} onChange={(e:any)=>handleInputChange('ae3', e.target.value)}></Stock>
+      {renderEngineInputs('ae', 3)}
       <h1>Boiler</h1>
-    <Stock typevalue={inputs.boiler_type1} typeOnChange={(e:any)=>handleInputChange('boiler_type1', e.target.value)} stockvalue={inputs.boiler1} onChange={(e:any)=>handleInputChange('boiler1', e.target.value)}></Stock>
-    <Stock typevalue={inputs.boiler_type2} typeOnChange={(e:any)=>handleInputChange('boiler_type2', e.target.value)} stockvalue={inputs.boiler2} onChange={(e:any)=>handleInputChange('boiler2', e.target.value)}></Stock>
-    <Stock typevalue={inputs.boiler_type3} typeOnChange={(e:any)=>handleInputChange('boiler_type3', e.target.value)} stockvalue={inputs.boiler3} onChange={(e:any)=>handleInputChange('boiler3', e.target.value)}></Stock>
+      {renderEngineInputs('boiler', 3)}
+
       </div>
       <div className='flex flex-col gap-3'>
       <h1>Fuel Oil Consumption</h1>
-    <Stock typevalue={inputs.foc_type1} typeOnChange={(e:any)=>handleInputChange('foc_type1', e.target.value)} stockvalue={inputs.foc1} onChange={(e:any)=>handleInputChange('foc1', e.target.value)}></Stock>
-    <Stock typevalue={inputs.foc_type2} typeOnChange={(e:any)=>handleInputChange('foc_type2', e.target.value)} stockvalue={inputs.foc2} onChange={(e:any)=>handleInputChange('foc2', e.target.value)}></Stock>
-    <Stock typevalue={inputs.foc_type3} typeOnChange={(e:any)=>handleInputChange('foc_type3', e.target.value)} stockvalue={inputs.foc3} onChange={(e:any)=>handleInputChange('foc3', e.target.value)}></Stock>
+      {renderEngineInputs('foc', 3)}
       <h1>Previous Remain</h1>
-    <Stock typevalue={inputs.pr_type1} typeOnChange={(e:any)=>handleInputChange('pr_type1', e.target.value)} stockvalue={inputs.pr1} onChange={(e:any)=>handleInputChange('pr1', e.target.value)}></Stock>
-    <Stock typevalue={inputs.pr_type2} typeOnChange={(e:any)=>handleInputChange('pr_type2', e.target.value)} stockvalue={inputs.pr2} onChange={(e:any)=>handleInputChange('pr2', e.target.value)}></Stock>
-    <Stock typevalue={inputs.pr_type3} typeOnChange={(e:any)=>handleInputChange('pr_type3', e.target.value)} stockvalue={inputs.pr3} onChange={(e:any)=>handleInputChange('pr3', e.target.value)}></Stock>
+      {renderEngineInputs('pr', 3)}
       <h1>Remain</h1>
-    <Stock typevalue={inputs.remain_type1} typeOnChange={(e:any)=>handleInputChange('remain_type1', e.target.value)} stockvalue={inputs.remain1} onChange={(e:any)=>handleInputChange('remain1', e.target.value)}></Stock>
-    <Stock typevalue={inputs.remain_type2} typeOnChange={(e:any)=>handleInputChange('remain_type2', e.target.value)} stockvalue={inputs.remain2} onChange={(e:any)=>handleInputChange('remain2', e.target.value)}></Stock>
-    <Stock typevalue={inputs.remain_type3} typeOnChange={(e:any)=>handleInputChange('remain_type3', e.target.value)} stockvalue={inputs.remain3} onChange={(e:any)=>handleInputChange('remain3', e.target.value)}></Stock>
+      {renderEngineInputs('remain', 3)}
+    
       </div>
       </div>
       <div className='mt-5'>

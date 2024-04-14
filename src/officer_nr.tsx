@@ -1,13 +1,32 @@
 import React, { useState } from 'react'
 import { DefaultButton, DefaultInput, InputNoLabel, TopBar1 } from './template_element'
+import axios from 'axios'
 
 const OfficerNr = () => {
+  const handleSubmit = () => { 
+    console.log(inputs)
+    axios.post("http://sezero.pythonanywhere.com/officer-nr/", inputs)
+    .then((response:any)=>{
+      console.log(response)
+      alert("Success added noon report data")
+    })
+    .catch((error:any)=>{
+      console.log(error)
+      const errors = error.response.data;
+
+      let error_message = "";
+      Object.keys(errors).forEach(key => {
+        error_message += `${key}: ${errors[key]}\n`
+      });
+      alert(error_message)
+    })
+  }
     const [inputs, setInputs] = useState({
 
     distance: "",
     speed: "",
     vessel_name: "",
-
+    user: JSON.parse(localStorage.getItem('userData')!).id,
     date: "",
     voyage_code: "",
   });
@@ -39,7 +58,7 @@ const OfficerNr = () => {
         </div>
       </div>
       <div className='mt-10'>
-      <DefaultButton onClick={()=>{}} text="Submit"></DefaultButton></div>
+      <DefaultButton onclick={handleSubmit} text="Submit"></DefaultButton></div>
     </div>
   )
 }
