@@ -36,42 +36,53 @@ const OfficerDashboard = () => {
       
        </div>
        <div className='relative overflow-x-auto mt-5'>
-<table className='text-sm text-center'>
+<table className='styled-table text-sm text-center '>
   <thead>
   <tr>
     <th >Route</th>
-    <th >Speed</th>
-    <th>Distance</th>
-    <th>RPM</th>
-    <th>Fuel Oil Consumption</th>
-    <th>Running Hours</th>
-    <th>RPM</th>
-    <th>Fuel Oil Consumption</th>
-    <th>MDO</th>
-    <th>HSD</th>
-    <th>LSFO</th>
-    <th>Running Hours</th>
-    <th>Load (kW)</th>
-    <th>Fuel Oil Consumption</th>
-    <th>Running Hours</th>
-    <th>Load (kW)</th>
-    <th>Fuel Oil Consumption</th>
-    <th>Running Hours</th>
-    <th>Load (kW)</th>
-    <th>Fuel Oil Consumption</th>
-    <th>Running Hours</th>
-    <th>Load (kW)</th>
-    <th>Fuel Oil Consumption</th>
-    <th>MDO</th>
-    <th>HSD</th>
-    <th>LSFO</th>
-    <th>Running Hours</th>
-    <th>Fuel Oil Consumption</th>
-    <th>MDO</th>
-    <th>HSD</th>
-    <th>LSFO</th>
+    <th >Speed (kn)</th>
+    <th>Distance (Nm)</th>
+    <th>Actual Distance (Nm)</th>
+    <th>Trim (m)</th>
+    <th>Displacement (Ton)</th>
+     <th>Reefer Container</th>
+    <th>Time Departure</th>
+    <th>Time Arrival</th>
+    <th>Sea Hour</th>
+    <th>Port Hour</th>
+    <th>Manuvering Hour</th>
+    <th>Wind Direct</th>
+    <th>Wind Force</th>
+    <th>Cloudness</th>
+    <th>Weather Condition</th>
+    <th>Sea Condition</th>
+    <th>Relative Current</th>
   </tr>
   </thead>
+  <tbody>
+  {data && Object.values(data).flat().map((item:any, index) => (
+    <tr key={index}>
+        <td>{item.route}</td>
+        <td>{item.speed}</td>
+        <td>{item.distance}</td>
+        <td>{item.actual_distance}</td>
+        <td>{item.trim}</td>
+        <td>{item.displacement}</td>
+        <td>{item.rc}</td>
+        <td>{item.td}</td>
+        <td>{item.ta}</td>
+        <td>{item.sh}</td>
+        <td>{item.ph}</td>
+        <td>{item.mh}</td>
+        <td>{item.direct}</td>
+        <td>{item.force}</td>
+        <td>{item.cloud}</td>
+        <td>{item.wc}</td>
+        <td>{item.sc}</td>
+        <td>{item.rcd}</td>
+    </tr>
+))}
+  </tbody>
   </table>
   </div>
     </div>

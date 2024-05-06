@@ -9,7 +9,7 @@ const Signin = () => {
   const handlePegawaiChange = (event:any) => {
     setPegawai(event.target.value);
   };
-
+  const [loading, setLoading] = useState(false)
   const handlePasswordChange = (event:any) => {
     setPassword(event.target.value);
   };
@@ -18,20 +18,28 @@ const Signin = () => {
         username: pegawai,
         password: password
     }
+    setLoading(true)
     axios.post("http://sezero.pythonanywhere.com/login/", data)
          .then(function (response) {
+                    setLoading(false)
                     console.log(response.data);
                     var userData = response.data.user;
                     var userDataString = JSON.stringify(userData);
                     localStorage.setItem('token', response.data.token);
                     localStorage.setItem('userData', userDataString);
-                    window.location.href = `/${response.data.user.position}`
+                    if(userData.status === true){
+                      window.location.href = `/${response.data.user.position}`
+                    }
+                    else{
+                      window.location.href = `/confirmation`
+                    }
                     
 
                 })
                 .catch(function (error) {
                     console.log(error);
                     setError(error.response.data.detail)
+                    setLoading(false)
                 });
   }
 
@@ -56,7 +64,7 @@ const Signin = () => {
           value={password}
           onChange={handlePasswordChange}
         />
-          <DefaultButton onclick={handleSignin} text={"Sign In"} ></DefaultButton>
+          <DefaultButton onclick={handleSignin} text={loading ? "Loading...": "Sign In"} ></DefaultButton>
           <h1>Are you an admin? <span><a className='text-blue-800' href="http://sezero.pythonanywhere.com/admin">Sign in as admin</a></span></h1>
     </div>
   

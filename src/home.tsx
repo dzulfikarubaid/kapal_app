@@ -1,17 +1,27 @@
+import axios from 'axios';
 import React, { useEffect } from 'react'
+
+export async function getStatus(){
+    await axios.get(`https://sezero.pythonanywhere.com/user/${JSON.parse(localStorage.getItem('userData')!).id}`)
+    .then((response) => {
+        if(response.data.status === true){
+           window.location.href = `/${JSON.parse(localStorage.getItem('userData')!).position}`;
+        }
+        else{
+          window.location.href = `/confirmation`;
+        }
+    })
+  }
+
 
 const Home = () => {
   function isTokenValid() {
     return localStorage.getItem('token') !== null;
+  
 }
-function redirectUser() {
-    if (isTokenValid()) {
-        // Token masih valid, arahkan ke halaman tertentu
-        window.location.href = `/${JSON.parse(localStorage.getItem('userData')!).position}`;
-    } 
-}
+
 useEffect(() => {
-  redirectUser();
+  getStatus();
 }, [])
   return (
     <div>
@@ -23,5 +33,4 @@ useEffect(() => {
     </div>
   )
 }
-
 export default Home

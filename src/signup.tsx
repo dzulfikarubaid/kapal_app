@@ -13,7 +13,7 @@ const Signup = () => {
   const handlePegawaiChange = (event:any) => {
     setPegawai(event.target.value);
   };
-
+  const [loading, setLoading] = useState(false)
   const handlePasswordChange = (event:any) => {
     setPassword(event.target.value);
   };
@@ -27,19 +27,33 @@ const Signup = () => {
     setCPassword(event.target.value);
   };
   const handleSignup = () => {
+    setLoading(true)
+    if(password !== cpassword){
+      setError("Password and Confirm Password must be same")
+      setLoading(false)
+      return
+    }
     axios.post("http://sezero.pythonanywhere.com/register/", {username: pegawai, password: password, name: name, email:email, position: position, confirm_password: cpassword})
          .then(function (response) {
+                    setLoading(false)
                     console.log(response.data);
                     var userData = response.data.user;
                     var userDataString = JSON.stringify(userData);
                     localStorage.setItem('token', response.data.token);
                     localStorage.setItem('userData', userDataString);
-                    window.location.href = `/${response.data.user.position}`
+                    window.location.href = `/confirmation`
                 })
                 .catch(function (error) {
+
                     console.log(error);
-                     setError(error.response.data.detail)
-                });
+                    if(error.response.data.error.username[0] === "A user with that username already exists."){
+                      setError("A user with that employee ID already exists.")
+                      return
+                    }
+                     setError("Please fill all the fields")
+                    setLoading(false)
+                }
+                );
   }
 
   return (
@@ -105,7 +119,7 @@ const Signup = () => {
           value={cpassword}
           onChange={handleCPasswordChange}
         />
-          <DefaultButton onclick={handleSignup} text={"Sign Up"} ></DefaultButton>
+          <DefaultButton onclick={handleSignup} text={loading?"Loading...":"Sign Up"} ></DefaultButton>
     </div>
   
     </div>

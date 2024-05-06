@@ -1,6 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.styled-table {
+  border-collapse: collapse;
+  width: 100%; /* Adjust width as needed */
+  margin: 20px 0;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+ /* Adjust alignment as needed */
+}
+
+
 /* 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

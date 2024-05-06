@@ -151,7 +151,7 @@ const DashboardEngineer = () => {
     </table> */}
     
 <div className='relative overflow-x-auto mt-5'>
-<table className='text-sm text-center'>
+<table className='styled-table text-sm text-center'>
   <thead>
   <tr>
     <th rowSpan={2}>Route</th>

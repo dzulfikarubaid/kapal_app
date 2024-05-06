@@ -30,6 +30,7 @@ import OdOh from './od_oh.tsx';
 import OdPd from './od_pd.tsx';
 import CeDr from './ce_dr.tsx';
 import CeNr from './ce_nr.tsx';
+import Confirmation from './confirmation.tsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -127,6 +128,10 @@ const router = createBrowserRouter([
   {
     path:"/ce-nr",
     element: <CeNr></CeNr>
+  },
+  {
+    path:"/confirmation",
+    element: <Confirmation></Confirmation>
   }
 
 

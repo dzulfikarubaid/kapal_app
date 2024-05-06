@@ -1,0 +1,9 @@
+POST https://sezero.pythonanywhere.com/login/ HTTP/1.1
+content-type: application/json
+
+{
+
+    "username": "engineer1",
+    "password": "admin123"
+}
+//
