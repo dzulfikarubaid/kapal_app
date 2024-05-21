@@ -4,7 +4,11 @@ import App from './App.tsx'
 import './index.css'
 import {
   createBrowserRouter,
+  redirect,
   RouterProvider,
+  useNavigate,
+  useNavigation,
+  useRoutes
 } from "react-router-dom";
 import Home from './home.tsx';
 import Signin from './signin.tsx';
@@ -28,13 +32,43 @@ import Od from './od.tsx';
 import OdNr from './od_nr.tsx';
 import OdOh from './od_oh.tsx';
 import OdPd from './od_pd.tsx';
-import CeDr from './ce_dr.tsx';
+import CeDr from './ce-dr/ce_dr.tsx';
+
 import CeNr from './ce_nr.tsx';
 import Confirmation from './confirmation.tsx';
+import CrDrEdit from './ce-dr/ce_dr_edit.tsx';
+import MasterNrEdit from './master_nr_edit.tsx';
+import OfficerDash from './officer_dash.tsx';
+import MasterDrEdit from './master_dr_edit.tsx';
+// import Admin from './admin.tsx';
+
+const AdminRedirect = () => {
+  React.useEffect(() => {
+    window.location.href = 'https://sezero.pythonanywhere.com/admin/';
+  }, []);
+
+  return null;
+};
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home></Home>,
+  },
+  {
+    path: '/ce-dr/:id',
+    element: <CrDrEdit></CrDrEdit>
+
+  },
+  {
+    path: '/master-nr/:id',
+    element: <MasterNrEdit></MasterNrEdit>
+
+  },
+  {
+    path: '/admin',
+    // redirect to https://sezero.pythonanywhere.com/admin/
+    element: <AdminRedirect></AdminRedirect>
   },
   {
     path: "/signin",
@@ -79,7 +113,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/officer-dashboard",
-    element: <OfficerDashboard></OfficerDashboard>
+    element: <OfficerDash></OfficerDash>
   },
   {
     path: "/officer-nr",
@@ -104,6 +138,10 @@ const router = createBrowserRouter([
   {
     path:"/master-dr",
     element: <MasterDr></MasterDr>
+  },
+  {
+    path:"/master-dr/:id",
+    element: <MasterDrEdit></MasterDrEdit>
   },
   {
     path:"/od",

@@ -1,8 +1,8 @@
-POST https://sezero.pythonanywhere.com/login/ HTTP/1.1
+POST http://sezero.pythonanywhere.com/admin/login/?next=/admin HTTP/1.1
 content-type: application/json
 
 {
-
+    "csrfmiddlewaretoken": "52wtswstwstwtwwyywyww",
     "username": "engineer1",
     "password": "admin123"
 }

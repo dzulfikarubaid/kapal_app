@@ -10,9 +10,10 @@ const Confirmation = () => {
   return (
     <>
     <TopBar4></TopBar4>
-    <div className='flex flex-col justify-center items-center text-center h-screen'>
+    <div className='flex flex-col justify-center gap-6 items-center text-center pt-10'>
+    <img src="wait.webp" alt="" />
     <h1>Waiting for admin confirmation</h1>
-    <button onClick={Onclick}>{loading? 'Loading...': 'Refresh'}</button>
+    <button className='px-6 bg-indigo-500 py-1 text-white rounded-full' onClick={Onclick}>{loading? 'Loading...': 'Refresh'}</button>
     </div>
     </>
     

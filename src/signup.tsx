@@ -33,7 +33,8 @@ const Signup = () => {
       setLoading(false)
       return
     }
-    axios.post("http://sezero.pythonanywhere.com/register/", {username: pegawai, password: password, name: name, email:email, position: position, confirm_password: cpassword})
+    let dataUser = position === 'admin' ? {username: pegawai, password: password, name: name, email:email, position: position, confirm_password: cpassword, is_staff: true, is_superuser: true} : {username: pegawai, password: password, name: name, email:email, position: position, confirm_password: cpassword}
+    axios.post("http://sezero.pythonanywhere.com/register/", dataUser )
          .then(function (response) {
                     setLoading(false)
                     console.log(response.data);
@@ -101,6 +102,7 @@ const Signup = () => {
     <option value="ce">Chief Engineer</option>
     <option value="officer">Officer</option>
     <option value="engineer">Engineer</option> 
+    <option value="admin">Admin</option>
     {/* <option value="admin">Admin</option> */}
           </select>
         <DefaultInput

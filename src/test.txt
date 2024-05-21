@@ -1,0 +1,3 @@
+<td>{Number(item.remain_type1 === "MDO" ? item.remain1 : 0)+Number(item.remain_type2 === "MDO" ? item.remain2 : 0)+Number(item.remain_type3 === "MDO" ? item.remain3 : 0)}</td>
+<td>{Number(item.remain_type1 === "HSD" ? item.remain1 : 0)+Number(item.remain_type2 === "HSD" ? item.remain2 : 0)+Number(item.remain_type3 === "HSD" ? item.remain3 : 0)}</td>
+<td>{Number(item.remain_type1 === "LSFO" ? item.remain1 : 0)+Number(item.remain_type2 === "LSFO" ? item.remain2 : 0)+Number(item.remain_type3 === "LSFO" ? item.remain3 : 0)}</td>

@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
-import { DefaultButton, DefaultInput, InputNoLabel, TopBar1 } from './template_element'
+import React, { useEffect, useState } from 'react'
+import { DefaultButton, DefaultInput, DefaultInput2, InputNoLabel, TopBar1 } from './template_element'
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-const CeNr = () => {
+const MasterNrEdit = () => {
+    const {id} = useParams()
    const [inputs, setInputs] = useState<any>({
-
+    
     vessel_name: "",
     voyage_code: "",
     date:"",
@@ -47,12 +49,38 @@ const CeNr = () => {
     remain3:"",
     user: JSON.parse(localStorage.getItem('userData')!).id
   });
+  const [databyid, setDatabyid] = useState<any>([])
+    useEffect(() => {
+    axios.get("http://sezero.pythonanywhere.com/nr/", {
+      headers: {
+
+      }
+    })
+      .then((response: any) => {
+        console.log(response.data)
+        const databyid = response.data.filter((item: any) => item.id == id)
+        console.log(databyid[0].route)
+        setDatabyid(databyid)
+
+        // Periksa dan isi field kosong dengan data dari databyid
+        const newInputs:any = { ...inputs };
+        Object.keys(newInputs).forEach((key) => {
+          if (!newInputs[key] && databyid[0][key]) {
+            newInputs[key] = databyid[0][key];
+          }
+        });
+        setInputs(newInputs);
+      })
+      .catch((error: any) => {
+        console.log(error)
+      })
+  }, []);
   const handleSubmit = () => {
     console.log(inputs)
-    axios.post("http://sezero.pythonanywhere.com/ce-nr/", inputs)
+    axios.patch(`http://sezero.pythonanywhere.com/nr-update/${id}/`, inputs)
     .then((response:any)=>{
       console.log(response)
-      alert("Success added data")
+      alert("Success update data")
     })
     .catch((error:any)=>{
       console.log(error)
@@ -90,26 +118,18 @@ const CeNr = () => {
     }
     return engineInputs;
   }
-  // function Stock({ typevalue, typeOnChange, stockvalue, stockOnChange }: any) {
-  //   return (
-  //     <div className='flex flex-row gap-4  items-center'>
-  //       <select id={`stock_type`} name={`stock_type`} value={typevalue} onChange={typeOnChange} className="bg-white border focus:outline-none border-gray-400 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2 py-1 ">
-  //         <option selected disabled value={""}>Type</option>
-  //         <option value="HSD">HSD</option>
-  //         <option value="MDO">MDO</option>
-  //         <option value="LSFO">LSFO</option>
-  //       </select>
-  //       <InputNoLabel type="text" value={stockvalue} onChange={stockOnChange} />
-  //       <h1>Liter</h1>
-  //     </div>
-  //   )
-  // }
+
   return (
     <div><TopBar1></TopBar1>
+    {
+        databyid.length > 0 &&
+    
+    <div>
+    
     <div className='flex flex-wrap w-full justify-between'>
-        <DefaultInput label="Vessel Name" type="text" value={inputs.vessel_name} onChange={(e: any) => handleInputChange("vessel_name", e.target.value)} />
-        <DefaultInput label="Voyage Code" type="text" value={inputs.voyage_code} onChange={(e: any) => handleInputChange("voyage_code", e.target.value)} />
-        <DefaultInput label="Date" type="date" value={inputs.date} onChange={(e: any) => handleInputChange("date", e.target.value)}></DefaultInput>
+        <DefaultInput2 label="Vessel Name" type="text" defaultValue={databyid[0].vessel_name} onChange={(e: any) => handleInputChange("vessel_name", e.target.value)} />
+        <DefaultInput2 label="Voyage Code" type="text" defaultValue={databyid[0].voyage_code} onChange={(e: any) => handleInputChange("voyage_code", e.target.value)} />
+        <DefaultInput2 label="Date" type="date" defaultValue={databyid[0].date} onChange={(e: any) => handleInputChange("date", e.target.value)}></DefaultInput2>
 
       </div>
       <div className='mt-10 flex flex-row gap-16'>
@@ -132,10 +152,13 @@ const CeNr = () => {
     
       </div>
       </div>
+        </div>
+    }
       <div className='mt-5'>
+    
 <DefaultButton onclick={handleSubmit} text={"Submit"}></DefaultButton></div>
     </div>
   )
 }
 
-export default CeNr
+export default MasterNrEdit

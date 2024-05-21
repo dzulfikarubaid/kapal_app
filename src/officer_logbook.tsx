@@ -15,7 +15,7 @@ const OfficerLogbook = () => {
     rcd:"",
     vessel_name: "",
     route:"",
-    date: "",
+    date_logbook: "",
     voyage_code: "",
     time1:"",
     time2:"",
@@ -57,7 +57,7 @@ const OfficerLogbook = () => {
         <DefaultInput label="Vessel Name" type="text" value={inputs.vessel_name} onChange={(e:any) => handleInputChange("vessel_name", e.target.value)} />
         <DefaultInput label="Voyage Code"  type="text" value={inputs.voyage_code} onChange={(e:any) => handleInputChange("voyage_code", e.target.value)} />
         <DefaultInput label="Route"  type="text" value={inputs.route} onChange={(e:any) => handleInputChange("route", e.target.value)} />
-        <DefaultInput type="date" label="Date" value={inputs.date} onChange={(e:any)=>handleInputChange("date", e.target.value)}></DefaultInput>
+        <DefaultInput type="date" label="Date" value={inputs.date_logbook} onChange={(e:any)=>handleInputChange("date_logbook", e.target.value)}></DefaultInput>
         <div className='flex flex-col'>
         <h1>Time Periode</h1>
         <div className='flex flex-row gap-4 justify-center items-center'>

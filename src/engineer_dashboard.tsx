@@ -121,34 +121,6 @@ const DashboardEngineer = () => {
         <DefaultInput label="Voyage Code" type="text" value={inputs.voyage_code} onChange={(e: any) => handleInputChange("voyage_code", e.target.value)} />
       
     </div>
-    {/* <table className=''>
-        <thead>
-        {table.getHeaderGroups().map((headerGroup) => (
-          <tr key={headerGroup.id} className=''>
-            {headerGroup.headers.map((header) => (
-              <th key={header.id} className=''>
-                {flexRender(
-                  header.isPlaceholder ? null : header.column.columnDef.header,
-                  header.getContext()
-                )}
-              </th>
-            ))}
-          </tr>
-        ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <tr className='' key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <td className='' key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-
-            </tr>
-          ))} 
-        </tbody>
-    </table> */}
     
 <div className='relative overflow-x-auto mt-5'>
 <table className='styled-table text-sm text-center'>
@@ -204,7 +176,8 @@ const DashboardEngineer = () => {
   </tr>
   </thead>
   <tbody>
-  {data.map((item:any, index) => (
+  { data.map((item:any, index) => (
+    inputs.vessel_name === item.vessel_name && inputs.voyage_code === item.voyage_code && 
               <tr key={index}>
                 <td>{item.route}</td>
                 <td>{item.time1}</td>

@@ -61,6 +61,7 @@ const OfficerDashboard = () => {
   </thead>
   <tbody>
   {data && Object.values(data).flat().map((item:any, index) => (
+   inputs.vessel_name === item.vessel_name && inputs.voyage_code === item.voyage_code &&
     <tr key={index}>
         <td>{item.route}</td>
         <td>{item.speed}</td>
@@ -70,8 +71,8 @@ const OfficerDashboard = () => {
         <td>{item.displacement}</td>
         <td>{item.rc}</td>
         <td>{item.td}</td>
-        <td>{item.ta}</td>
-        <td>{item.sh}</td>
+        <td>{item.time2}</td>
+        <td>{item.time2 - item.time1}</td>
         <td>{item.ph}</td>
         <td>{item.mh}</td>
         <td>{item.direct}</td>

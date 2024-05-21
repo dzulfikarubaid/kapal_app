@@ -65,7 +65,10 @@ const Signin = () => {
           onChange={handlePasswordChange}
         />
           <DefaultButton onclick={handleSignin} text={loading ? "Loading...": "Sign In"} ></DefaultButton>
+          <div className='w-full flex flex-row justify-between'>
           <h1>Are you an admin? <span><a className='text-blue-800' href="http://sezero.pythonanywhere.com/admin">Sign in as admin</a></span></h1>
+          <h1>Don't have an account? <span><a href="/signup" className='text-blue-800'>Sign Up</a></span></h1>
+          </div>
     </div>
   
     </div>

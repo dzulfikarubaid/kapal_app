@@ -10,7 +10,7 @@ const OfficerDr = () => {
     trim:"",
     rc:"",
     vessel_name: "",
-    date: "",
+    date_dr: "",
     voyage_code: "",
     user: JSON.parse(localStorage.getItem('userData')!).id
   });
@@ -44,7 +44,7 @@ const OfficerDr = () => {
     <div className='flex flex-wrap w-full justify-between'>
         <DefaultInput label="Vessel Name" type="text" value={inputs.vessel_name} onChange={(e: any) => handleInputChange("vessel_name", e.target.value)} />
         <DefaultInput label="Voyage Code" type="text" value={inputs.voyage_code} onChange={(e: any) => handleInputChange("voyage_code", e.target.value)} />
-        <DefaultInput label="Date" type="date" value={inputs.date} onChange={(e: any) => handleInputChange("date", e.target.value)}></DefaultInput>
+        <DefaultInput label="Date" type="date" value={inputs.date_dr} onChange={(e: any) => handleInputChange("date_dr", e.target.value)}></DefaultInput>
 
       </div>
       <div className=' flex flex-col gap-4 mt-10'>
