@@ -40,6 +40,9 @@ import CrDrEdit from './ce-dr/ce_dr_edit.tsx';
 import MasterNrEdit from './master_nr_edit.tsx';
 import OfficerDash from './officer_dash.tsx';
 import MasterDrEdit from './master_dr_edit.tsx';
+import OdFpr from './od_fpr.tsx';
+import Fs from './fs.tsx';
+import FsFpr from './fs_fpr.tsx';
 // import Admin from './admin.tsx';
 
 const AdminRedirect = () => {
@@ -144,6 +147,14 @@ const router = createBrowserRouter([
     element: <MasterDrEdit></MasterDrEdit>
   },
   {
+    path:"/fs",
+    element: <Fs></Fs>
+  },
+  {
+    path:"/fs-fpr",
+    element: <FsFpr></FsFpr>
+  },
+  {
     path:"/od",
     element: <Od></Od>
   },
@@ -158,6 +169,10 @@ const router = createBrowserRouter([
   {
     path:"/od-pd",
     element: <OdPd></OdPd>
+  },
+  {
+    path:"/od-fpr",
+    element: <OdFpr></OdFpr>
   },
   {
     path:"/ce-dr",

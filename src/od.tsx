@@ -10,6 +10,7 @@ const Od = () => {
     
     <BigButton href="/od-nr" >Noon Report Recap</BigButton>
     <BigButton href="/od-pd">Plotting Data</BigButton>
+    <BigButton href="/od-fpr">Fuel Procurement Request Form</BigButton>
 
 
     </div>

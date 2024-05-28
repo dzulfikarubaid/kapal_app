@@ -98,7 +98,7 @@ export const TopBar4 = () => {
 
 export const BigButton = ({href, children}:any) => {
   return (
-    <a className='p-4 rounded-xl bg-indigo-500 text-white' href={href}>{children}</a>
+    <a className='p-4 rounded-xl bg-indigo-500 text-white w-[150px] h-[150px] flex justify-center items-center text-center' href={href}>{children}</a>
   )
 }
 

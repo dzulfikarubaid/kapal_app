@@ -83,7 +83,7 @@ const OdOh = () => {
   const [distance2, setDistance2] = useState(0)
   const [displacement1, setDisplacement1] = useState(0)
   const [displacement2, setDisplacement2] = useState(0)
-const filteredData = dataLogs.filter((logItem:any, index:any) => {
+const filteredData = dataLogs.filter((logItem: any, index: any) => {
     const nrItem = dataNrs[index];
     const drItem = dataDrs[index];
     const engineItem = dataEngine[index];
@@ -95,19 +95,29 @@ const filteredData = dataLogs.filter((logItem:any, index:any) => {
     const maxDistanceCondition = distance2 === 0 || nrItem.distance <= Number(distance2);
     const minDisplacementCondition = displacement1 === 0 || drItem.displacement >= Number(displacement1);
     const maxDisplacementCondition = displacement2 === 0 || drItem.displacement <= Number(displacement2);
+    const routeParts = logItem?.route?.split('-') || [] // Split the route into parts
+    const isSameRoute = routeParts.length === 2 && routeParts[0] === routeParts[1]; // Check if the start and end points are the same
+
+    const routeCondition = status === "port" 
+        ? isSameRoute 
+        : status === "sea" 
+            ? !isSameRoute 
+            : true;
 
     return (
-      inputs.vessel_name === drItem.vessel_name &&
-      drItem.date_dr >= inputs.period1 &&
-      drItem.date_dr <= inputs.period2 &&
-      minSpeedCondition &&
-      maxSpeedCondition &&
-      minDistanceCondition &&
-      maxDistanceCondition &&
-      minDisplacementCondition &&
-      maxDisplacementCondition
+        inputs?.vessel_name === drItem?.vessel_name &&
+        drItem.date_dr >= inputs.period1 &&
+        drItem.date_dr <= inputs.period2 &&
+        minSpeedCondition &&
+        maxSpeedCondition &&
+        minDistanceCondition &&
+        maxDistanceCondition &&
+        minDisplacementCondition &&
+        maxDisplacementCondition &&
+        routeCondition
     );
-  });
+});
+
 
   return (
     <div><TopBar1></TopBar1>
@@ -288,7 +298,7 @@ const filteredData = dataLogs.filter((logItem:any, index:any) => {
                       return (2 * Math.sin(Math.sqrt(Math.sin(((lat1 - lat2) / 2) ** 2) + Math.sin(((long2 - long1) / 2) ** 2) * Math.cos(lat1) * Math.cos(lat2))))
                     }
         
-                    if (inputs.vessel_name === drItem.vessel_name && drItem.date_dr >= inputs.period1 && drItem.date_dr <= inputs.period2) {
+                    if (inputs?.vessel_name === drItem?.vessel_name && drItem.date_dr >= inputs.period1 && drItem.date_dr <= inputs.period2) {
                       return (
 
                         <tr key={index}>
@@ -542,7 +552,7 @@ const filteredData = dataLogs.filter((logItem:any, index:any) => {
                     }
 
                     if (
-      inputs.vessel_name === drItem.vessel_name && drItem.date_dr >= inputs.period1 && drItem.date_dr <= inputs.period2
+      inputs.vessel_name === drItem.vessel_name && drItem.date_dr >= inputs.period1 && drItem.date_dr <= inputs.period2 
     )  {
                       return (
 
