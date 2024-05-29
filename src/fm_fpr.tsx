@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { DefaultButton, DefaultInput, InputNoLabel, TopBar1 } from './template_element'
 
-const FsFpr = () => {
+const FmFpr = () => {
     const [vn, setVn] = useState("")
     const [vc, setVc] = useState("")
     const [route, setRoute] = useState("")
@@ -86,4 +86,4 @@ const FsFpr = () => {
   )
 }
 
-export default FsFpr
+export default FmFpr

@@ -43,6 +43,13 @@ import MasterDrEdit from './master_dr_edit.tsx';
 import OdFpr from './od_fpr.tsx';
 import Fs from './fs.tsx';
 import FsFpr from './fs_fpr.tsx';
+import Fm from './fm.tsx';
+import FmFoc from './fm_foc.tsx';
+import FmFpr from './fm_fpr.tsx';
+import FmPd from './fm_pd.tsx';
+import Director from './director.tsx';
+import DirectorPdf from './director_pdf.tsx';
+import DirectorPdo from './director_pdo.tsx';
 // import Admin from './admin.tsx';
 
 const AdminRedirect = () => {
@@ -185,6 +192,35 @@ const router = createBrowserRouter([
   {
     path:"/confirmation",
     element: <Confirmation></Confirmation>
+  },
+  {
+    path:"/fm",
+    element: <Fm></Fm>
+  },
+  {
+    path:"/fm-foc",
+    element: <FmFoc></FmFoc>
+  },
+  {
+    path:"/fm-fpr",
+    element: <FmFpr></FmFpr>
+  },
+  {
+    path:"/fm-pd",
+    element: <FmPd></FmPd>
+  },
+  {
+    path:"/director",
+    element: <Director></Director>
+  },
+  {
+    path:"/director-pdo",
+    element: <DirectorPdo></DirectorPdo>
+  },
+  {
+    path:"/director-pdf",
+    element: <DirectorPdf></DirectorPdf>
+
   }
 
 
