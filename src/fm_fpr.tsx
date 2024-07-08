@@ -51,7 +51,7 @@ const FmFpr = () => {
         }
     }, [vn, vc, route, data])
 
-    const handleSubmit = () => {
+    const handleSubmit = (status) => {
       if(br1Value === "" || br2Value === "" || br3Value === "" || price1Value === "" || price2Value === "" || price3Value === ""){
         alert("Please fill all fields")
         return
@@ -68,7 +68,8 @@ const FmFpr = () => {
         price2type: price2Type,
         price2value: price2Value,
         price3type: price3Type,
-        price3value: price3Value
+        price3value: price3Value,
+        accept: status
       })
       .then((response:any)=>{
         console.log(response)
@@ -153,8 +154,9 @@ const FmFpr = () => {
                     <h1>/Liter</h1>
                 </div>
                 <DefaultInput value={Number(price1Value) + Number(price2Value) + Number(price3Value)} label="Total Price" type="text"></DefaultInput>
-                <div className='mt-6'>
-                    <DefaultButton onclick={handleSubmit} text="Accept"></DefaultButton>
+                <div className='mt-6 flex flex-row gap-5 w-full justify-center'>
+                    <DefaultButton onclick={() => handleSubmit(true)} text="Accept"></DefaultButton>
+                    <DefaultButton className='bg-red-500' onclick={() => handleSubmit(false)} text="Reject"></DefaultButton>
                 </div>
             </div>
         </div>

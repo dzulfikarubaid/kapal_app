@@ -51,9 +51,9 @@ export const InputNoLabel = ({ id, name, type, value, onChange, className, defau
   );
 };
 
-export function DefaultButton({onclick, text}:any){
+export function DefaultButton({onclick, text, className}:any){
     return(
-        <button onClick={onclick} className='bg-indigo-500 text-white px-4 py-1 rounded-xl w-full'>{text}</button>
+        <button onClick={onclick} className={`${className} bg-indigo-500 text-white px-4 py-1 rounded-xl w-full`}>{text}</button>
     )
 }
 

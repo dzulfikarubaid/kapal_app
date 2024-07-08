@@ -98,7 +98,7 @@ const OfficerDash = () => {
                 <td>{drItem?.rc }</td>
                 <td>{drItem?.td }</td>
                 <td>{logItem?.time2 }</td>
-                <td>{(logItem?.time2 != null && logItem?.time1 != null) ? logItem?.time2 - logItem?.time1 : ""}</td>
+                <td>{logItem?.sh ?? (logItem?.time2 != null && logItem?.time1 != null) ? logItem?.time2 - logItem?.time1 : ""}</td>
                 <td>{logItem?.ph }</td>
                 <td>{logItem?.mh }</td>
                 <td>{logItem?.direct }</td>

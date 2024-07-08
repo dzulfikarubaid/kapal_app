@@ -6,10 +6,7 @@ const Officer = () => {
     <div>
     <TopBar2></TopBar2>
     <div className='flex flex-row h-screen justify-center items-center gap-5'>
-    <BigButton href="/officer-logbook">Log Book Data</BigButton>
-    <BigButton href="/officer-nr">Noon Report Data</BigButton>
-    
-    <BigButton href="/officer-dr">Departure Report Data</BigButton>
+    <BigButton href="/officer-input">Input</BigButton>
     <BigButton href="/officer-dashboard">Data Recap</BigButton>
 
 

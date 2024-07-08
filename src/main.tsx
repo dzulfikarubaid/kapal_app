@@ -50,6 +50,7 @@ import FmPd from './fm_pd.tsx';
 import Director from './director.tsx';
 import DirectorPdf from './director_pdf.tsx';
 import DirectorPdo from './director_pdo.tsx';
+import OfficerInput from './officer_input.tsx';
 // import Admin from './admin.tsx';
 
 const AdminRedirect = () => {
@@ -120,6 +121,10 @@ const router = createBrowserRouter([
   {
     path: "/officer-logbook",
     element: <OfficerLogbook></OfficerLogbook>
+  },
+  {
+    path: "/officer-input",
+    element: <OfficerInput></OfficerInput>
   },
   {
     path: "/officer-dashboard",
