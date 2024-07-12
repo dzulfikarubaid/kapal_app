@@ -1,5 +1,6 @@
 import React from 'react';
 import { BiArrowBack, BiLogOut } from 'react-icons/bi'
+import { FaBell } from 'react-icons/fa';
 
 
 export const DefaultInput = ({ label, id, name, type, value, onChange, className }:any) => {
@@ -65,15 +66,17 @@ export const TopBar1 = () => {
   return (
     <div className='py-4 justify-between items-center flex flex-row'>
     <button onClick={()=>window.history.back()}><BiArrowBack size={25}></BiArrowBack></button>
+    
    <button className='border-2 border-black p-2 rounded-xl ' onClick={SignOut}>Sign Out</button>
     </div>
   )
 }
 export const TopBar2 = () => {
   return (
-    <div className='py-4 items-center flex flex-row-reverse'>
-
+    <div className='py-4 items-center flex flex-row-reverse gap-4'>
+    
        <button className='border-2 border-black p-2 rounded-xl ' onClick={SignOut}>Sign Out</button>
+       <button className='flex justify-center items-center gap-2'><FaBell size={20}></FaBell>Notification</button>
     </div>
   )
 }

@@ -2,12 +2,17 @@ import React, { useEffect } from 'react'
 import { DefaultInput, TopBar1 } from './template_element'
 import axios from 'axios'
 import { act } from 'react-dom/test-utils'
+import moment from 'moment'
 
 const OfficerDash = () => {
     const [inputs, setInputs] = React.useState({
         vessel_name: "",
         voyage_code: "",
     })
+    function formatDate(date: any) {
+    var t = new Date(date)
+    return moment(t).format("DD-MM-YYYY HH:mm");
+  }
     const handleInputChange = (fieldName: any, value: string) => {
         setInputs((prevState: any) => ({
             ...prevState,
@@ -96,9 +101,9 @@ const OfficerDash = () => {
                 <td>{drItem?.trim }</td>
                 <td>{drItem?.displacement }</td>
                 <td>{drItem?.rc }</td>
-                <td>{drItem?.td }</td>
+                <td>{drItem?.td > 1000000000000 && formatDate(drItem?.td)	  }</td>
                 <td>{logItem?.time2 }</td>
-                <td>{logItem?.sh ?? (logItem?.time2 != null && logItem?.time1 != null) ? logItem?.time2 - logItem?.time1 : ""}</td>
+                <td>{logItem?.sh}</td>
                 <td>{logItem?.ph }</td>
                 <td>{logItem?.mh }</td>
                 <td>{logItem?.direct }</td>

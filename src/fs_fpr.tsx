@@ -62,7 +62,8 @@ const FsFpr = () => {
         price2type: price2Type,
         price2value: price2Value,
         price3type: price3Type,
-        price3value: price3Value
+        price3value: price3Value,
+        user: JSON.parse(localStorage.getItem('userData')!).id
       })
       .then((response:any)=>{
         console.log(response)
