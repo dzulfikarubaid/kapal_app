@@ -222,9 +222,8 @@ const DirectorPdo: React.FC = () => {
   const clusters = [
     { range: [0, 6229], color: 'rgba(255, 99, 132, 0.5)' },
     { range: [6229, 7825], color: 'rgba(54, 100, 235, 0.5)' },
-    { range: [7825, 8989], color: 'rgba(75, 192, 192, 0.5)' },
-    { range: [8989, 10078], color: 'rgba(153, 102, 255, 0.5)' },
-    { range: [10078, 11584], color: 'rgba(255, 159, 64, 0.5)' }
+    { range: [7825, 10078], color: 'rgba(75, 192, 192, 0.5)' },
+    { range: [10078, 11584], color: 'rgba(153, 102, 255, 0.5)' },
   ];
   const clustersSeaSpeed = [
     { range: [150, 245.9], color: 'rgba(255, 99, 132, 0.5)' },
@@ -234,23 +233,23 @@ const DirectorPdo: React.FC = () => {
     { range: [391.1, 475], color: 'rgba(255, 159, 64, 0.5)' }
   ];
   const clustersManvDur = [
-    { range: [210, 1420], color: 'rgba(255, 99, 132, 0.5)' },
-    { range: [1420, 2583], color: 'rgba(54, 100, 235, 0.5)' },
-    { range: [2583, 4064], color: 'rgba(75, 192, 192, 0.5)' },
-    { range: [4064, 6589], color: 'rgba(153, 102, 255, 0.5)' },
-    { range: [6589, 11910], color: 'rgba(255, 159, 64, 0.5)' }
+    { range: [210, 1490], color: 'rgba(255, 99, 132, 0.5)' },
+    { range: [1490, 2689], color: 'rgba(54, 100, 235, 0.5)' },
+    { range: [2689, 4144], color: 'rgba(75, 192, 192, 0.5)' },
+    { range: [4144, 6641], color: 'rgba(153, 102, 255, 0.5)' },
+    { range: [6641, 11910], color: 'rgba(255, 159, 64, 0.5)' }
   ];
   const clustersSeaDur = [
-    { range: [256, 2457], color: 'rgba(255, 99, 132, 0.5)' },
-    { range: [2457, 4673], color: 'rgba(54, 100, 235, 0.5)' },
+    { range: [280, 2487], color: 'rgba(255, 99, 132, 0.5)' },
+    { range: [2487, 4673], color: 'rgba(54, 100, 235, 0.5)' },
     { range: [4673, 6483], color: 'rgba(75, 192, 192, 0.5)' },
     { range: [6483, 12061], color: 'rgba(153, 102, 255, 0.5)' },
     { range: [12061, 18102], color: 'rgba(255, 159, 64, 0.5)' }
   ]
   const clustersPortDur = [
-    { range: [192, 3117], color: 'rgba(255, 99, 132, 0.5)' },
-    { range: [3117, 5961], color: 'rgba(54, 100, 235, 0.5)' },
-    { range: [5961, 10448], color: 'rgba(75, 192, 192, 0.5)' },
+    { range: [602, 3175], color: 'rgba(255, 99, 132, 0.5)' },
+    { range: [3175, 6001], color: 'rgba(54, 100, 235, 0.5)' },
+    { range: [6001, 10448], color: 'rgba(75, 192, 192, 0.5)' },
     { range: [10448, 18006], color: 'rgba(153, 102, 255, 0.5)' },
   ]
 
