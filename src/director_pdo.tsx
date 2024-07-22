@@ -260,7 +260,7 @@ const DirectorPdo: React.FC = () => {
         return cluster.color;
       }
     }
-    return 'rgba(0,0,0, 0.2)'; // Default color jika tidak sesuai dengan kluster manapun
+    return 'rgba(0,0,0, 1)'; // Default color jika tidak sesuai dengan kluster manapun
   }
   function getClusterSeaSpeed(foc: any) {
     for (const cluster of clustersSeaSpeed) {
@@ -268,7 +268,7 @@ const DirectorPdo: React.FC = () => {
         return cluster.color;
       }
     }
-    return 'rgba(0, 0, 0, 0.2)'; // Default color jika tidak sesuai dengan kluster manapun
+    return 'rgba(0, 0, 0, 1)'; // Default color jika tidak sesuai dengan kluster manapun
   }
   function getClusterManvDur(foc: any) {
     for (const cluster of clustersManvDur) {
@@ -276,7 +276,7 @@ const DirectorPdo: React.FC = () => {
         return cluster.color;
       }
     }
-    return 'rgba(0, 0, 0, 0.2)'; // Default color jika tidak sesuai dengan kluster manapun
+    return 'rgba(0, 0, 0, 1)'; // Default color jika tidak sesuai dengan kluster manapun
   }
   function getClusterSeaDur(foc: any) {
     for (const cluster of clustersSeaDur) {
@@ -284,7 +284,7 @@ const DirectorPdo: React.FC = () => {
         return cluster.color;
       }
     }
-    return 'rgba(0, 0, 0, 0.2)'; // Default color jika tidak sesuai dengan kluster manapun
+    return 'rgba(0, 0, 0, 1)'; // Default color jika tidak sesuai dengan kluster manapun
   }
   function getClusterPortDur(foc: any) {
     for (const cluster of clustersPortDur) {
@@ -292,7 +292,7 @@ const DirectorPdo: React.FC = () => {
         return cluster.color;
       }
     }
-    return 'rgba(0, 0, 0, 0.2)'; // Default color jika tidak sesuai dengan kluster manapun
+    return 'rgba(0, 0, 0, 1)'; // Default color jika tidak sesuai dengan kluster manapun
   }
 
 
